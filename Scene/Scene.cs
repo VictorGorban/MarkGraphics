@@ -37,6 +37,8 @@ namespace Game_Consoles
             ResetCamera();
 
             Light = new Vector3D(0, 150, -150);
+
+
         }
 
         public void ResetCamera()

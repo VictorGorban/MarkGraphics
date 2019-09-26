@@ -1112,5 +1112,21 @@ namespace Game_Consoles
 
             Scene.Light.X = value;
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            var radio = new RadioObject("radio1");
+            radio.BasePoint = new Point3D(0,0,0);
+            radio.AngleX = (int)RotateX.Value;
+            radio.AngleY = (int)RotateY.Value;
+            radio.AngleZ = (int)RotateZ.Value;
+            radio.SetScale((double)ScaleX.Value, (double)ScaleY.Value, (double)ScaleZ.Value);
+
+
+            Scene.AddObject(radio);
+            int index = ObjectsList.Items.Add("radio1");
+            ObjectsList.SelectedIndex = index;
+            ObjectPanButton.Enabled = true;
+        }
     }
 }

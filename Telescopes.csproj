@@ -7,7 +7,7 @@
     <ProjectGuid>{BC199172-5839-4CEE-9648-C77DEDDBE0F3}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Radios</RootNamespace>
-    <AssemblyName>Radios</AssemblyName>
+    <AssemblyName>Telescopes</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -75,7 +75,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scene\PrimitiveWithName.cs" />
-    <Compile Include="Scene\RadioObject.cs" />
+    <Compile Include="Scene\TelescopeObject.cs" />
     <Compile Include="Scene\Scene.cs" />
     <Compile Include="Scene\SceneObject.cs" />
     <Compile Include="Geometry\Sphere.cs" />

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Game_Consoles
+namespace Telescopes
 {
     [Serializable]
     public class Scene
@@ -16,14 +16,14 @@ namespace Game_Consoles
             SOLID = 1,
         }
 
-        public RadioObject SelectedForPanObject = null;
+        public TelescopeObject SelectedForPanObject = null;
         public bool IsPanning { get; set; }
 
 
         public Vector3D Light { get; set; }
         public Camera Camera { get; set; }
         public MODE Mode { get; set; } = MODE.WIREFRAME;
-        public List<RadioObject> Objects { get; private set; } = new List<RadioObject>();
+        public List<TelescopeObject> Objects { get; private set; } = new List<TelescopeObject>();
 
         public Scene() { }
 
@@ -57,14 +57,14 @@ namespace Game_Consoles
             Light = new Vector3D(0, 50, 0);
         }
 
-        public void AddObject(RadioObject obj)
+        public void AddObject(TelescopeObject obj)
         {
             Objects.Add(obj);
         }
 
-        public RadioObject GetObjectByName(string name)
+        public TelescopeObject GetObjectByName(string name)
         {
-            foreach (RadioObject obj in Objects)
+            foreach (TelescopeObject obj in Objects)
             {
                 if (name.Equals(obj.ObjectName))
                 {

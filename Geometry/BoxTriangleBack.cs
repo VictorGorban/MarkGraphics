@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Collections.Generic;
 
-namespace Game_Consoles
+namespace Telescopes
 {
     [System.Serializable]
     public class BoxTriangleBack : Primitive

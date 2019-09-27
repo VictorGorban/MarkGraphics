@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Game_Consoles
+namespace Telescopes
 {
     public static class MathHelpers
     {
@@ -115,7 +115,7 @@ namespace Game_Consoles
             b = c;
         }
 
-        public static Point3D GetMidPoint(this System.Collections.Generic.IList<RadioObject> objects)
+        public static Point3D GetMidPoint(this System.Collections.Generic.IList<TelescopeObject> objects)
         {
             var total = new Point3D(0,0,0);
 
@@ -135,7 +135,7 @@ namespace Game_Consoles
             return total;
         }
 
-        public static double GetMaxDistanceFrom(this System.Collections.Generic.IList<RadioObject> objects, Point3D target)
+        public static double GetMaxDistanceFrom(this System.Collections.Generic.IList<TelescopeObject> objects, Point3D target)
         {
             if (objects.Count is 0)
                 return 0;

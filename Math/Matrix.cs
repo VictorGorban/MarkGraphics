@@ -1,4 +1,4 @@
-﻿namespace Game_Consoles
+﻿namespace Telescopes
 {
     [System.Serializable]
     public class Matrix

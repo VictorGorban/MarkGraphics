@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Drawing;
 
-namespace Game_Consoles
+namespace Telescopes
 {
     [Serializable]
-    public class RadioObject : SceneObject
+    public class TelescopeObject : SceneObject
     {
         public double Basis1CylinderRadius { get; set; } = 5;
-        public double PrimaryLegsLength { get; set; } = 40;
+        public double PrimaryLegsLength { get; set; } = 60;
         public double Basis2CylinderRadius { get; set; } = 8;
         public double Basis3CylinderRadius { get; set; } = 11;
         public double LenseRadius { get; set; } = 10;
@@ -17,9 +17,9 @@ namespace Game_Consoles
         public int HandsCount { get; set; } = 2;
         public int HandsRadius { get; set; } = 1;
 
-        public RadioObject() { }
+        public TelescopeObject() { }
 
-        public RadioObject(string name) : base(name)
+        public TelescopeObject(string name) : base(name)
         {
             UpdateObject();
         }
@@ -28,9 +28,9 @@ namespace Game_Consoles
         {
             Primitives.Clear();
 
-            var cdn = 5;
+            var cdn = 3;
             //var centerLeg = new PrimitiveWithName(
-            //    new Cylinder(new Point3D(0,0,0), cdn, PrimaryLegsLength, 10, Color.LightGray),
+            //    new Cylinder(new Point3D(0, 0, 0), cdn, PrimaryLegsLength, 10, Color.LightGray),
             //    "centerLeg"
             //    );
             //Primitives.Add(centerLeg);
@@ -68,14 +68,14 @@ namespace Game_Consoles
 
                 if (legs.Length is 3)
                 {
-                    legs[0].AngleX = 23;
-                    legs[0].AngleZ = -22;
+                    legs[0].AngleX = 21;//23;
+                    legs[0].AngleZ = -20;//-20;
 
-                    legs[1].AngleX = 10;
-                    legs[1].AngleZ = 28;
+                    legs[1].AngleX = 8;//10;
+                    legs[1].AngleZ = 27;//28;
 
-                    legs[2].AngleX = -27;
-                    legs[2].AngleZ = -7;
+                    legs[2].AngleX = -27;//-27;
+                    legs[2].AngleZ = -7;//-7;
                 }
                 if (legs.Length is 4)
                 {
@@ -93,7 +93,133 @@ namespace Game_Consoles
                 }
             }
 
+            var h = PrimaryLegsLength * 8.5 / 10;
+            var helpBox1 = new PrimitiveWithName(
+                new Box(new Point3D(0, h, 0), 10, 5, 10, Color.AntiqueWhite),
+                "helpBox1"
+                ); // раз все равно примитив по умолчанию с именем, почему бы не задать ему имя.
+            Primitives.Add(helpBox1);
+            h += 5;
 
+            var helpCylinder1 = new PrimitiveWithName(
+                new Cylinder(new Point3D(0, h, 0), cdn, 10, 10, Color.LightGray),
+                "helpCylinder1"
+                );
+            Primitives.Add(helpCylinder1);
+            h += 10;
+
+            var secondaryPlank = new PrimitiveWithName(
+                new Box(new Point3D(0, h, 0), 5, 5, Basis2CylinderRadius * 2 + cdn * 2, Color.AntiqueWhite),
+                "secondaryPlank"
+                ); // раз все равно примитив по умолчанию с именем, почему бы не задать ему имя.
+            Primitives.Add(secondaryPlank);
+            h += 5;
+
+            if (SecondaryLegsCount is 1)
+            {
+                var secondaryLeg = new PrimitiveWithName(
+                new Cylinder(new Point3D(0, h, 0), cdn, SecondaryLegsLength, 10, Color.AntiqueWhite),
+                "secondaryLeg"
+                );
+                Primitives.Add(secondaryLeg);
+                h += 8;
+            }
+            else
+            {// 2
+                var secondaryLeg1 = new PrimitiveWithName(
+                new Cylinder(new Point3D(0, h, Basis2CylinderRadius + cdn), cdn, SecondaryLegsLength, 10, Color.AntiqueWhite),
+                "secondaryLeg1"
+                );
+                Primitives.Add(secondaryLeg1);
+
+                var secondaryLeg2 = new PrimitiveWithName(
+                new Cylinder(new Point3D(0, h, -(Basis2CylinderRadius + cdn)), cdn, SecondaryLegsLength, 10, Color.AntiqueWhite),
+                "secondaryLeg2"
+                );
+                Primitives.Add(secondaryLeg2);
+            }
+
+            var basisCylinder2 = new PrimitiveWithName(
+                new Cylinder(new Point3D(-10, h + 7 - (10 - Basis2CylinderRadius), 0), Basis2CylinderRadius, 20, 10, Color.WhiteSmoke),
+                "basisCylinder2"
+                );
+            Primitives.Add(basisCylinder2);
+            basisCylinder2.AngleZ = 70;
+
+            {
+                var p = basisCylinder2.Primitive.BasePoint.Clone();
+                p.X -= 18;
+                p.Y -= 7;
+
+                var basisCylinder1 = new PrimitiveWithName(
+                new Cylinder(p, Basis1CylinderRadius, 20, 10, Color.WhiteSmoke),
+                "basisCylinder1"
+                );
+                Primitives.Add(basisCylinder1);
+                basisCylinder1.AngleZ = 70;
+
+            }
+
+            {
+                var p = basisCylinder2.Primitive.BasePoint.Clone();
+                p.X += 18;
+                p.Y += 7;
+
+                var basisCylinder3 = new PrimitiveWithName(
+                new Cylinder(p, Basis3CylinderRadius, 20, 10, Color.WhiteSmoke),
+                "basisCylinder3"
+                );
+                Primitives.Add(basisCylinder3);
+                basisCylinder3.AngleZ = 70;
+
+            }
+
+            {
+                var p = basisCylinder2.Primitive.BasePoint.Clone();
+                p.X += 35;
+                p.Y += 3 + (10 - LenseRadius);
+
+                var lense = new PrimitiveWithName(
+                new Sphere(p, LenseRadius, 16, Color.Aquamarine),
+                "lense"
+                );
+                Primitives.Add(lense);
+
+            }
+
+            {
+                var p = basisCylinder2.Primitive.BasePoint.Clone();
+                p.Z -= 2;
+                p.X -= 15;
+                p.Y -= 7;
+                p.Y += Basis1CylinderRadius;
+
+                var hand1 = new PrimitiveWithName(new Cylinder(p, HandsRadius, 10, 10, Color.WhiteSmoke),
+                "hand1"
+                );
+                Primitives.Add(hand1);
+                hand1.AngleZ = -20;
+                hand1.AngleX = 60;
+            }
+
+            if (HandsCount == 2)
+            {
+                {
+                    var p = basisCylinder2.Primitive.BasePoint.Clone();
+                    p.Z += 2;
+                    p.X -= 15;
+                    p.Y -= 7;
+                    p.Y += Basis1CylinderRadius;
+
+                    var hand2 = new PrimitiveWithName(new Cylinder(p, HandsRadius, 10, 10, Color.WhiteSmoke),
+                    "hand2"
+                    );
+                    Primitives.Add(hand2);
+                    hand2.AngleZ = -20;
+                    hand2.AngleX = -60;
+                }
+            }
+            
 
             //var basis = new PrimitiveWithName(
             //    new Box(new Point3D(0, 0, 0), 150, 50, 75, Color.SaddleBrown),

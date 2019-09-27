@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 
-namespace Game_Consoles
+namespace Telescopes
 {
     public class Sphere : Primitive
     {

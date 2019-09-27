@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Game_Consoles
+namespace Telescopes
 {
     static class Program
     {

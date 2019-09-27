@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Game_Consoles
+namespace Telescopes
 {
     /// <summary>
     /// Класс для реализации матрицы изменения

@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
-namespace Game_Consoles
+namespace Telescopes
 {
     public partial class MainForm : Form
     {
@@ -15,7 +15,7 @@ namespace Game_Consoles
         public bool IsPan = false;
         private Camera tempCamera = null;
 
-        public RadioObject currentObject = null;
+        public TelescopeObject currentObject = null;
 
         public MainForm()
         {
@@ -870,7 +870,7 @@ namespace Game_Consoles
                     scene.Add(lightElement);
 
                     XElement objects = new XElement("objects");
-                    foreach (RadioObject radio in Scene.Objects)
+                    foreach (TelescopeObject radio in Scene.Objects)
                     {
                         XElement objectelement;
 
@@ -985,7 +985,7 @@ namespace Game_Consoles
                     foreach (XElement objectElement in scene.Element("objects").Elements("Radio"))
                     {
                         var radioName = objectElement.Attribute("name").Value;
-                        var radio = new RadioObject(radioName);
+                        var radio = new TelescopeObject(radioName);
 
                         XElement objectPosition = objectElement.Element("position");
                         radio.BasePoint = new Point3D(
@@ -1115,7 +1115,7 @@ namespace Game_Consoles
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            var radio = new RadioObject("radio1");
+            var radio = new TelescopeObject("radio1");
             radio.BasePoint = new Point3D(0,0,0);
             radio.AngleX = (int)RotateX.Value;
             radio.AngleY = (int)RotateY.Value;

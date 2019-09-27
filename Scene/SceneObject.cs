@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Game_Consoles
+namespace Telescopes
 {
     /// <summary>
     /// Класс, который содержит методы и свойства, которые в принципе можно вынести в отдельный класс из RadioObject.

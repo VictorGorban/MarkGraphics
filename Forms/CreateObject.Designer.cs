@@ -1,4 +1,4 @@
-﻿namespace Game_Consoles
+﻿namespace Telescopes
 {
     partial class CreateObject
     {

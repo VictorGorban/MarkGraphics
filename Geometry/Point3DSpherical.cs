@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Game_Consoles
+namespace Telescopes
 {
     [Serializable]
     public class Point3DSpherical : Point3D

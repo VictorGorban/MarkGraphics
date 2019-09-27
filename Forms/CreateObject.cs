@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace Game_Consoles
+namespace Telescopes
 {
     public partial class CreateObject : Form
     {
@@ -35,7 +35,7 @@ namespace Game_Consoles
 
             if (mainForm.Scene.GetObjectByName(ObjectName.Text) == null)
             {
-                var radio = new RadioObject(ObjectName.Text);
+                var radio = new TelescopeObject(ObjectName.Text);
                 radio.BasePoint = basePoint;
                 radio.AngleX = (int)RotateX.Value;
                 radio.AngleY = (int)RotateY.Value;

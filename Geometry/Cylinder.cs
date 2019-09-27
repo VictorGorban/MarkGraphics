@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace Game_Consoles
+namespace Telescopes
 {
     [Serializable]
     public class Cylinder : Primitive

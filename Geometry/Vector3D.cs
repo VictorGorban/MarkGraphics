@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Game_Consoles
+namespace Telescopes
 {
     public class Vector3D
     {

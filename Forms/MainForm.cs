@@ -982,45 +982,45 @@ namespace Telescopes
                     ObjectsList.Items.Clear();
                     ObjectViewPanel.Visible = ObjectViewPanel.Enabled = ObjectSpacePanel.Visible = ObjectSpacePanel.Enabled = false;
 
-                    foreach (XElement objectElement in scene.Element("objects").Elements("Radio"))
+                    foreach (XElement objectElement in scene.Element("objects").Elements("Telescope"))
                     {
                         var radioName = objectElement.Attribute("name").Value;
-                        var radio = new TelescopeObject(radioName);
+                        var tel = new TelescopeObject(radioName);
 
                         XElement objectPosition = objectElement.Element("position");
-                        radio.BasePoint = new Point3D(
+                        tel.BasePoint = new Point3D(
                             double.Parse(objectPosition.Attribute("x").Value, format),
                             double.Parse(objectPosition.Attribute("y").Value, format),
                             double.Parse(objectPosition.Attribute("z").Value, format)
                             );
 
                         XElement rotate = objectElement.Element("rotate");
-                        radio.AngleX = int.Parse(rotate.Attribute("x").Value);
-                        radio.AngleY = int.Parse(rotate.Attribute("y").Value);
-                        radio.AngleZ = int.Parse(rotate.Attribute("z").Value);
+                        tel.AngleX = int.Parse(rotate.Attribute("x").Value);
+                        tel.AngleY = int.Parse(rotate.Attribute("y").Value);
+                        tel.AngleZ = int.Parse(rotate.Attribute("z").Value);
 
                         XElement scale = objectElement.Element("scale");
-                        radio.SetScale(
+                        tel.SetScale(
                             double.Parse(scale.Attribute("x").Value, format),
                             double.Parse(scale.Attribute("y").Value, format),
                             double.Parse(scale.Attribute("z").Value, format)
                             );
 
-                        radio.Basis1CylinderRadius = double.Parse(objectElement.Element("Basis1CylinderRadius").Value, format);
-                        radio.PrimaryLegsLength = double.Parse(objectElement.Element("PrimaryLegsLength").Value, format);
-                        radio.Basis2CylinderRadius = double.Parse(objectElement.Element("Basis2CylinderRadius").Value, format);
-                        radio.Basis3CylinderRadius = double.Parse(objectElement.Element("Basis3CylinderRadius").Value, format);
-                        radio.LenseRadius = double.Parse(objectElement.Element("LenseRadius").Value, format);
-                        radio.SecondaryLegsLength = double.Parse(objectElement.Element("SecondaryLegsLength").Value, format);
-                        radio.PrimaryLegsCount = double.Parse(objectElement.Element("PrimaryLegsCount").Value, format);
-                        radio.SecondaryLegsCount = double.Parse(objectElement.Element("SecondaryLegsCount").Value, format);
-                        radio.HandsCount = int.Parse(objectElement.Element("HandsCount").Value, format);
-                        radio.HandsRadius = int.Parse(objectElement.Element("HandsRadius").Value, format);
+                        tel.Basis1CylinderRadius = double.Parse(objectElement.Element("Basis1CylinderRadius").Value, format);
+                        tel.PrimaryLegsLength = double.Parse(objectElement.Element("PrimaryLegsLength").Value, format);
+                        tel.Basis2CylinderRadius = double.Parse(objectElement.Element("Basis2CylinderRadius").Value, format);
+                        tel.Basis3CylinderRadius = double.Parse(objectElement.Element("Basis3CylinderRadius").Value, format);
+                        tel.LenseRadius = double.Parse(objectElement.Element("LenseRadius").Value, format);
+                        tel.SecondaryLegsLength = double.Parse(objectElement.Element("SecondaryLegsLength").Value, format);
+                        tel.PrimaryLegsCount = double.Parse(objectElement.Element("PrimaryLegsCount").Value, format);
+                        tel.SecondaryLegsCount = double.Parse(objectElement.Element("SecondaryLegsCount").Value, format);
+                        tel.HandsCount = int.Parse(objectElement.Element("HandsCount").Value, format);
+                        tel.HandsRadius = int.Parse(objectElement.Element("HandsRadius").Value, format);
 
-                        radio.UpdateObject();
+                        tel.UpdateObject();
 
-                        Scene.AddObject(radio);
-                        ObjectsList.Items.Add(radio.ObjectName);
+                        Scene.AddObject(tel);
+                        ObjectsList.Items.Add(tel.ObjectName);
 
                     }
 

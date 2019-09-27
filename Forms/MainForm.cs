@@ -461,8 +461,8 @@ namespace Telescopes
 
                 var target = currentObject.BasePoint;
                 var position = new Point3D(currentObject.BasePoint.X,
-                    currentObject.BasePoint.Y + currentObject.MaxLength,
-                    currentObject.BasePoint.Z + currentObject.MaxLength);
+                    currentObject.BasePoint.Y + currentObject.MaxLength*2.5,
+                    currentObject.BasePoint.Z + currentObject.MaxLength*2);
 
                 Scene.Camera.SetPositionAndTarget(position, target);
             }

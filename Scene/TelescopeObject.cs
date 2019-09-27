@@ -180,7 +180,7 @@ namespace Telescopes
                 p.Y += 3 + (10 - LenseRadius);
 
                 var lense = new PrimitiveWithName(
-                new Sphere(p, LenseRadius, 16, Color.Aquamarine),
+                new Sphere(p, LenseRadius, 16, Color.LightBlue),
                 "lense"
                 );
                 Primitives.Add(lense);

@@ -874,18 +874,18 @@ namespace Telescopes
                     {
                         XElement objectelement;
 
-                        objectelement = new XElement("Radio");
+                        objectelement = new XElement("Telescope");
 
-                        objectelement.SetElementValue("RightVolumeControllerStandRadius", string.Format(format, "{0:0.00}", radio.Basis1CylinderRadius));
-                        objectelement.SetElementValue("RightVolumeControllerWidestPartRadius", string.Format(format, "{0:0.00}", radio.PrimaryLegsLength));
-                        objectelement.SetElementValue("RightVolumeControllerStripeRadius", string.Format(format, "{0:0.00}", radio.Basis2CylinderRadius));
-                        objectelement.SetElementValue("LeftVolumeControllerStandRadius", string.Format(format, "{0:0.00}", radio.Basis3CylinderRadius));
-                        objectelement.SetElementValue("LeftVolumeControllerWidestPartRadius", string.Format(format, "{0:0.00}", radio.LenseRadius));
-                        objectelement.SetElementValue("LeftVolumeControllerStripeRadius", string.Format(format, "{0:0.00}", radio.SecondaryLegsLength));
-                        objectelement.SetElementValue("ControlButtonsHeight", string.Format(format, "{0:0.00}", radio.PrimaryLegsCount));
-                        objectelement.SetElementValue("ControlButtonsWidth", string.Format(format, "{0:0.00}", radio.SecondaryLegsCount));
-                        objectelement.SetElementValue("SphereCount", radio.HandsCount);
-                        objectelement.SetElementValue("PlayBackButtonsCount", radio.HandsRadius);
+                        objectelement.SetElementValue("Basis1CylinderRadius", string.Format(format, "{0:0.00}", radio.Basis1CylinderRadius));
+                        objectelement.SetElementValue("PrimaryLegsLength", string.Format(format, "{0:0.00}", radio.PrimaryLegsLength));
+                        objectelement.SetElementValue("Basis2CylinderRadius", string.Format(format, "{0:0.00}", radio.Basis2CylinderRadius));
+                        objectelement.SetElementValue("Basis3CylinderRadius", string.Format(format, "{0:0.00}", radio.Basis3CylinderRadius));
+                        objectelement.SetElementValue("LenseRadius", string.Format(format, "{0:0.00}", radio.LenseRadius));
+                        objectelement.SetElementValue("SecondaryLegsLength", string.Format(format, "{0:0.00}", radio.SecondaryLegsLength));
+                        objectelement.SetElementValue("PrimaryLegsCount", string.Format(format, "{0:0.00}", radio.PrimaryLegsCount));
+                        objectelement.SetElementValue("SecondaryLegsCount", string.Format(format, "{0:0.00}", radio.SecondaryLegsCount));
+                        objectelement.SetElementValue("HandsCount", radio.HandsCount);
+                        objectelement.SetElementValue("HandsRadius", radio.HandsRadius);
 
                         objectelement.SetAttributeValue("name", radio.ObjectName);
 
@@ -1006,16 +1006,16 @@ namespace Telescopes
                             double.Parse(scale.Attribute("z").Value, format)
                             );
 
-                        radio.Basis1CylinderRadius = double.Parse(objectElement.Element("RightVolumeControllerStandRadius").Value, format);
-                        radio.PrimaryLegsLength = double.Parse(objectElement.Element("RightVolumeControllerWidestPartRadius").Value, format);
-                        radio.Basis2CylinderRadius = double.Parse(objectElement.Element("RightVolumeControllerStripeRadius").Value, format);
-                        radio.Basis3CylinderRadius = double.Parse(objectElement.Element("LeftVolumeControllerStandRadius").Value, format);
-                        radio.LenseRadius = double.Parse(objectElement.Element("LeftVolumeControllerWidestPartRadius").Value, format);
-                        radio.SecondaryLegsLength = double.Parse(objectElement.Element("LeftVolumeControllerStripeRadius").Value, format);
-                        radio.PrimaryLegsCount = double.Parse(objectElement.Element("ControlButtonsHeight").Value, format);
-                        radio.SecondaryLegsCount = double.Parse(objectElement.Element("ControlButtonsWidth").Value, format);
-                        radio.HandsCount = int.Parse(objectElement.Element("SphereCount").Value, format);
-                        radio.HandsRadius = int.Parse(objectElement.Element("PlayBackButtonsCount").Value, format);
+                        radio.Basis1CylinderRadius = double.Parse(objectElement.Element("Basis1CylinderRadius").Value, format);
+                        radio.PrimaryLegsLength = double.Parse(objectElement.Element("PrimaryLegsLength").Value, format);
+                        radio.Basis2CylinderRadius = double.Parse(objectElement.Element("Basis2CylinderRadius").Value, format);
+                        radio.Basis3CylinderRadius = double.Parse(objectElement.Element("Basis3CylinderRadius").Value, format);
+                        radio.LenseRadius = double.Parse(objectElement.Element("LenseRadius").Value, format);
+                        radio.SecondaryLegsLength = double.Parse(objectElement.Element("SecondaryLegsLength").Value, format);
+                        radio.PrimaryLegsCount = double.Parse(objectElement.Element("PrimaryLegsCount").Value, format);
+                        radio.SecondaryLegsCount = double.Parse(objectElement.Element("SecondaryLegsCount").Value, format);
+                        radio.HandsCount = int.Parse(objectElement.Element("HandsCount").Value, format);
+                        radio.HandsRadius = int.Parse(objectElement.Element("HandsRadius").Value, format);
 
                         radio.UpdateObject();
 
@@ -1115,7 +1115,7 @@ namespace Telescopes
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            var radio = new TelescopeObject("radio1");
+            var radio = new TelescopeObject("telescope1");
             radio.BasePoint = new Point3D(0,0,0);
             radio.AngleX = (int)RotateX.Value;
             radio.AngleY = (int)RotateY.Value;
@@ -1124,7 +1124,7 @@ namespace Telescopes
 
 
             Scene.AddObject(radio);
-            int index = ObjectsList.Items.Add("radio1");
+            int index = ObjectsList.Items.Add(radio.ObjectName);
             ObjectsList.SelectedIndex = index;
             ObjectPanButton.Enabled = true;
         }
